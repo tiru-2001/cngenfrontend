@@ -1,0 +1,16 @@
+@import '../../../globalcss/global.scss';
+.payment {
+  min-height: 90vh;
+  background-color: #318f99;
+  @include flex(row, center, center, 0px);
+
+  button {
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: none;
+    background-color: #1a2944;
+    color: white;
+  }
+}
