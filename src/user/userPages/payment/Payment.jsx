@@ -11,11 +11,11 @@ const Payment = () => {
   console.log(bookingInfo);
   const initPayment = (data) => {
     const options = {
-      key: 'rzp_test_gpv7czy2nFRZJi',
+      key: 'rzp_live_KNylegCqksQhjg',
       amount: data.amount,
       currency: data.currency,
       name: 'cngen',
-      description: 'Test Transaction',
+      description: 'Cngen transaction',
       order_id: data.id,
       handler: async (response) => {
         try {

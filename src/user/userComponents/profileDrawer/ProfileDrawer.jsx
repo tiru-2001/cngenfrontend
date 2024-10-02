@@ -1,5 +1,13 @@
 import React from 'react';
-import { FaUser, FaHistory, FaMapMarkerAlt, FaCog, FaSignOutAlt, FaQuestionCircle, FaArrowLeft } from 'react-icons/fa';
+import {
+  FaUser,
+  FaHistory,
+  FaMapMarkerAlt,
+  FaCog,
+  FaSignOutAlt,
+  FaQuestionCircle,
+  FaArrowLeft,
+} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './ProfileDrawer.scss'; // Import the SCSS file
 
@@ -7,34 +15,29 @@ const ProfileDrawer = ({ isOpen, toggleDrawer }) => {
   const navigate = useNavigate();
 
   const handleNavigateToProfile = () => {
-    toggleDrawer(); 
-    navigate('/myprofile'); 
+    toggleDrawer();
+    navigate('/user/myprofile');
   };
 
   const handleNavigateToLocation = () => {
     toggleDrawer();
-    navigate('/location');
+    navigate('/user/location');
   };
 
   const handleNavigateToSettings = () => {
     toggleDrawer();
-    navigate('/settings');
+    navigate('/user/settings');
   };
 
   const handleLogout = () => {
     toggleDrawer();
-    navigate('/login'); 
+    navigate('/user-login');
   };
 
   return (
-    <div
-      className={`profile-drawer ${isOpen ? 'open' : ''}`}
-    >
+    <div className={`profile-drawer ${isOpen ? 'open' : ''}`}>
       <div className="drawer-content">
-        <button 
-          onClick={toggleDrawer}
-          className="close-button"
-        >
+        <button onClick={toggleDrawer} className="close-button">
           <FaArrowLeft className="icon" />
         </button>
 

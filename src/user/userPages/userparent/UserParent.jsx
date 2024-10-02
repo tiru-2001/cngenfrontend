@@ -2,7 +2,7 @@ import './userparent.scss';
 import { Outlet } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { Header, Navbar } from '../../../employee/components';
+import { Header, Navbar } from '../../userComponents/index';
 
 const UserParent = () => {
   const { userLoginInfo } = useSelector((state) => state.userslice);

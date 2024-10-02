@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
-import Header from '../../../user/userComponents/header/Header';
-import Navbar from '../../../user/userComponents/navbar/Navbar';
 import { useNavigate } from 'react-router-dom';
 import car from '../../../assets/images/car.png';
 import bike from '../../../assets/images/bike.png';
 import './BookingPage.scss';
-import { useSelector, useDispatch } from 'react-redux';
 
 const BookingPage = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
 
   const handleCarClick = () => {
-    navigate('/');
+    navigate('/user/booking');
   };
 
   const handleBikeClick = () => {
@@ -48,6 +45,14 @@ const BookingPage = () => {
           </div>
         </div>
       )}
+      <div className="booking_footer">
+        <small>
+          Developed by{' '}
+          <a href="https://thewebsort.com" target="_blank">
+            Websort
+          </a>
+        </small>
+      </div>
     </div>
   );
 };

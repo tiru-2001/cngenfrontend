@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
-import { FaMapMarkerAlt, FaSignOutAlt, FaCog, FaPencilAlt, FaArrowLeft, FaUser } from 'react-icons/fa';
+import {
+  FaMapMarkerAlt,
+  FaSignOutAlt,
+  FaCog,
+  FaPencilAlt,
+  FaArrowLeft,
+  FaUser,
+} from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../../user/userComponents/header/Header';
 import './ProfilePage.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { userLogout } from '../../../redux/slices/userslice';
 
 const ProfilePage = () => {
+  const dispatch = useDispatch();
+  const { userLoginInfo } = useSelector((state) => state.userslice);
   const [showEditPopup, setShowEditPopup] = useState(false);
-  const [profile, setProfile] = useState({
-    name: 'Bhavith T',
-    email: 'bhavitth@gmail.com',
-    phone: '741852963',
-    description: 'I am a car owner who values keeping my vehicle in pristine condition. I\'m looking for a reliable car wash service that offers thorough cleaning and detailing, ensuring my car looks its best after every wash.',
-  });
+  const [profile, setProfile] = useState();
 
   const [newProfile, setNewProfile] = useState(profile);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate('/login');
+    dispatch(userLogout());
+    navigate('/user-login');
   };
 
   const handleEditProfile = () => {
@@ -48,10 +55,9 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page">
-      <Header />
       <div className="profile-content">
         <div className="profile-header">
-          <button onClick={() => navigate('/home')} className="back-button">
+          <button onClick={() => navigate('/user')} className="back-button">
             <FaArrowLeft className="icon" />
           </button>
           <div className="profile-info">
@@ -61,47 +67,42 @@ const ProfilePage = () => {
                 <FaUser className="icon" />
               </div>
               <div className="profile-text">
-                <h3 className="name">{profile.name}</h3>
-                <p>{profile.email}</p>
-                <p>{profile.phone}</p>
+                <h3 className="name">{profile?.name}</h3>
+                <p>{userLoginInfo?.email}</p>
+                <p>{userLoginInfo?.phone}</p>
               </div>
-              <button 
+              {/* <button 
                 onClick={handleEditProfile} 
                 className="edit-button"
               >
                 <FaPencilAlt className="icon" />
-              </button>
+              </button> */}
             </div>
-            <p className="description">
-              {profile.description}
-            </p>
+            <p className="description">{profile?.description}</p>
           </div>
         </div>
 
         <div className="profile-actions">
-          <div className="action-item">
-            <FaMapMarkerAlt className="icon" />
-            <div className="action-text">
-              <p className="action-title">Water tank, 9th D btm layout</p>
-              <p>Bengaluru 560029</p>
-            </div>
-            <button onClick={handleEditLocation} className="edit-location">
+          {/* <div className="action-item"> */}
+          {/* <FaMapMarkerAlt className="icon" /> */}
+          {/* <div className="action-text"> */}
+          {/* <p className="action-title"></p> */}
+          {/* <p>Bengaluru 560029</p> */}
+          {/* </div> */}
+          {/* <button onClick={handleEditLocation} className="edit-location">
               <FaPencilAlt className="icon" />
-            </button>
-          </div>
+            </button> */}
+          {/* </div> */}
 
-          <div 
-            className="action-item cursor-pointer" 
-            onClick={() => navigate('/settings')}
+          <div
+            className="action-item cursor-pointer"
+            onClick={() => navigate('/user/settings')}
           >
             <FaCog className="icon" />
             <span>Settings</span>
           </div>
 
-          <div 
-            className="action-item cursor-pointer" 
-            onClick={handleLogout}
-          >
+          <div className="action-item cursor-pointer" onClick={handleLogout}>
             <FaSignOutAlt className="icon" />
             <span>Logout</span>
           </div>
@@ -111,29 +112,29 @@ const ProfilePage = () => {
           <div className="edit-popup">
             <div className="popup-content">
               <h2 className="popup-title">Edit Profile</h2>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="name"
                 value={newProfile.name}
                 onChange={handleChange}
-                placeholder="Name" 
-                className="input-field" 
+                placeholder="Name"
+                className="input-field"
               />
-              <input 
-                type="email" 
+              <input
+                type="email"
                 name="email"
                 value={newProfile.email}
                 onChange={handleChange}
-                placeholder="Email" 
-                className="input-field" 
+                placeholder="Email"
+                className="input-field"
               />
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 name="phone"
                 value={newProfile.phone}
                 onChange={handleChange}
-                placeholder="Phone" 
-                className="input-field" 
+                placeholder="Phone"
+                className="input-field"
               />
               <textarea
                 name="description"
@@ -144,16 +145,10 @@ const ProfilePage = () => {
                 className="textarea-field"
               />
               <div className="popup-buttons">
-                <button 
-                  onClick={closePopup} 
-                  className="cancel-button"
-                >
+                <button onClick={closePopup} className="cancel-button">
                   Cancel
                 </button>
-                <button 
-                  onClick={handleUpdateProfile} 
-                  className="update-button"
-                >
+                <button onClick={handleUpdateProfile} className="update-button">
                   Update
                 </button>
               </div>

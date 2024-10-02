@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
+    "@types/gapi.client.androidpublisher-v3": "^0.0.4",
     "axios": "^1.7.2",
     "rc-progress": "^4.0.0",
     "react": "^18.3.1",

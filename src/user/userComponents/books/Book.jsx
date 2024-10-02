@@ -109,6 +109,7 @@ const Book = () => {
           /> */}
 
           <input
+            className="pickup_address"
             type="text"
             value={address}
             onChange={(e) => {

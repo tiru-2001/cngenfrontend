@@ -1,64 +1,73 @@
+@import '../../../globalcss/global.scss';
 .booking-page {
-    background-color: #f7fafc;
-  
-    .title-container {
-      margin-top: 2.5rem;
+  @include flex(column, space-between, null, 0px);
+  background-color: #f7fafc;
+  min-height: 80vh;
+  .title-container {
+    margin-top: 2.5rem;
+    text-align: center;
+
+    .title {
+      font-size: 1.875rem; // 3xl
+      font-weight: bold;
+      color: #1a2944;
+    }
+
+    .subtitle {
+      color: #718096; // gray-600
+      margin-top: 1rem;
       text-align: center;
-  
-      .title {
-        font-size: 1.875rem; // 3xl
-        font-weight: bold;
-        color: #1a2944;
-      }
-  
-      .subtitle {
-        color: #718096; // gray-600
-        margin-top: 1rem;
-        text-align: center;
-        font-size: 1rem; // md
-        padding: 0 1.25rem; // px-5
-      }
+      font-size: 1rem; // md
+      padding: 0 1.25rem; // px-5
     }
-  
-    .options-container {
-      margin-top: 5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5rem; // space-y-20
-  
-      .option {
-        cursor: pointer;
-  
-        .option-image {
-          height: 3rem; // h-12
-          width: 7rem; // w-28
-        }
-      }
-    }
-  
-    .popup-overlay {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.7);
-  
-      .popup {
-        background-color: #ffffff;
-        color: #1a2944;
-        padding: 0.5rem; // p-2
-        border-radius: 0.5rem; // rounded-lg
-        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); // shadow-lg
-  
-        .popup-text {
-          text-align: center;
-          font-size: 1.125rem; // text-lg
-          font-weight: 600; // font-semibold
-        }
+  }
+
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem; // space-y-20
+
+    .option {
+      cursor: pointer;
+
+      .option-image {
+        height: 3rem; // h-12
+        width: 7rem; // w-28
       }
     }
   }
-  
+
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    .popup {
+      background-color: #ffffff;
+      color: #1a2944;
+      padding: 0.5rem; // p-2
+      border-radius: 0.5rem; // rounded-lg
+      box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); // shadow-lg
+
+      .popup-text {
+        text-align: center;
+        font-size: 1.125rem; // text-lg
+        font-weight: 600; // font-semibold
+      }
+    }
+  }
+  .booking_footer {
+    // margin-bottom: 30px;
+    padding: 10px;
+    @include flex(row, end, center, 0px);
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}

@@ -5,8 +5,8 @@ import './FuelPrice.scss';
 
 const FuelPrice = () => {
   const [city, setCity] = useState('Karnataka');
-  const [petrolPrice, setPetrolPrice] = useState('Rs. 100.58');
-  const [dieselPrice, setDieselPrice] = useState('Rs. 85.05');
+  const [petrolPrice, setPetrolPrice] = useState('Rs. 103.58');
+  const [dieselPrice, setDieselPrice] = useState('Rs. 88.94');
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
@@ -22,10 +22,10 @@ const FuelPrice = () => {
   return (
     <div className="fuel-price-page">
       <div className="search-bar">
-        <FaArrowLeft 
-          className="icon arrow-icon" 
+        <FaArrowLeft
+          className="icon arrow-icon"
           aria-label="Back to services"
-          onClick={() => navigate('/services')} 
+          onClick={() => navigate('/services')}
         />
         <input
           type="text"

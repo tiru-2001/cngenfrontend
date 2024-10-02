@@ -11,6 +11,8 @@ import Admin from './admin/index/Admin';
 import Employees from './admin/employees/Employees';
 import Tasks from './admin/tasks/Tasks';
 import MainLogin from './mainLogin/MainLogin';
+import EmployeeParent from './employeeparent/EmployeeParent';
+import Assigntask from './admin/assigntasks/AssignTask';
 export {
   Tasks,
   Admin,
@@ -25,4 +27,6 @@ export {
   Private,
   Profile,
   MainLogin,
+  EmployeeParent,
+  Assigntask,
 };

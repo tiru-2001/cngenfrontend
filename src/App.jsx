@@ -1,5 +1,9 @@
 import io from 'socket.io-client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+//employee imports
 import {
   Register,
   Login,
@@ -13,32 +17,31 @@ import {
   Employees,
   MainLogin,
   Admin,
+  EmployeeParent,
+  Assigntask,
 } from './employee/pages/index';
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import ProfileDrawer from './user/userComponents/profileDrawer/ProfileDrawer';
-import Book from './user/userComponents/books/Book';
-import PrivateRoute from './user/userComponents/PrivateRoute';
-import Payment from './user/userPages/payment/Payment';
-import NotificationPage from './user/userPages/notificationpage/NotificationPage';
-import BookingPage from './user/userPages/Bookingpage/BookingPage';
-import EditLocationPage from './user/userPages/editlocationpage/EditLocation';
-import FuelPrice from './user/userPages/fuelprice/FuelPrice';
-import UHome from './user/userPages/home/UHome';
-import VehicleDetails from './user/userComponents/vehicledetails/VehicleDetails';
-import ULogin from './user/userPages/login/ULogin';
-import ProfilePage from './user/userPages/profilepage/ProfilePage';
-import ServicesPage from './user/userPages/servicespage/ServicesPage';
-import SettingPage from './user/userPages/settingspage/SettingPage';
-import URegister from './user/userComponents/register/URegister';
-import EmployeeParent from './employee/pages/employeeparent/EmployeeParent';
-import UserParent from './user/userPages/userparent/UserParent';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import Assigntask from './employee/pages/admin/assigntasks/AssignTask';
+// user imports
+import {
+  ProfileDrawer,
+  URegister,
+  FuelPrice,
+  Book,
+  VehicleDetails,
+} from './user/userComponents/index';
+import {
+  ULogin,
+  NotificationPage,
+  UHome,
+  UserParent,
+  EditLocationPage,
+  Payment,
+  ProfilePage,
+  BookingPage,
+  ServicesPage,
+  SettingPage,
+} from './user/userPages';
 
 const socket = io('https://cngenbackend.onrender.com/');
-
 const App = () => {
   useEffect(() => {
     socket.on('connect', () => {
@@ -74,17 +77,16 @@ const App = () => {
             </Route>
           </Route>
           <Route path="user/*" element={<UserParent />}>
-            <Route index element={<UHome />} />
+            <Route path="booking" element={<UHome />} />
             <Route path="notifications" element={<NotificationPage />} />
-            <Route path="booking" element={<BookingPage />} />
+            <Route index element={<BookingPage />} />
             <Route path="services" element={<ServicesPage />} />
             <Route path="myprofile" element={<ProfilePage />} />
             <Route path="location" element={<EditLocationPage />} />
             <Route path="settings" element={<SettingPage />} />
             <Route path="book" element={<Book />} />
             <Route path="vehicle/:type" element={<VehicleDetails />} />
-            <Route path="fuelprice" element={<FuelPrice />} />
-            <Route path="profile" element={<ProfileDrawer />} />
+            <Route path="services/fuelprice" element={<FuelPrice />} />
             <Route path="payment" element={<Payment />} />
           </Route>
         </Routes>

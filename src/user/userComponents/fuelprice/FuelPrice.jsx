@@ -19,7 +19,6 @@ const FuelPrice = () => {
 
   return (
     <div className="fuel-price-container">
-      <Header />
       <div className="fuel-price-content">
         <div className="search-bar">
           <FaArrowLeft onClick={handleBack} className="back-icon" />
@@ -57,7 +56,6 @@ const FuelPrice = () => {
           </div>
         </div>
       </div>
-      <Navbar />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 const configuredUrl = axios.create({
-  baseURL: import.meta.env.VITE_APP_URL,
+  baseURL: 'https://cngenbackend.onrender.com/api/v1',
 });
 configuredUrl.interceptors.request.use((req) => {
   if (localStorage.getItem('token')) {

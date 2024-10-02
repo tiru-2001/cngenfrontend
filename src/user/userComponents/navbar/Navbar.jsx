@@ -23,7 +23,7 @@ const Navbar = () => {
           <FaHome className="icon" size={24} />
         </NavLink>
         <NavLink
-          to="/booking"
+          to="/user/booking"
           className={({ isActive }) =>
             isActive ? 'navbar-icon-active' : 'navbar-icon'
           }
@@ -31,7 +31,7 @@ const Navbar = () => {
           <FaSuitcase className="icon" size={24} />
         </NavLink>
         <NavLink
-          to="/services"
+          to="/user/services"
           className={({ isActive }) =>
             isActive ? 'navbar-icon-active' : 'navbar-icon'
           }
