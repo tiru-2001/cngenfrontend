@@ -4,23 +4,19 @@ import {
   FaArrowLeft,
   FaCalendarAlt,
   FaMapMarkerAlt,
-  FaClock,
 } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import TimeKeeper from 'react-timekeeper';
 import './Book.scss'; // Import the SCSS file
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addBookingInfo } from '../../../redux/slices/userslice';
 
 const Book = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [startDate, setStartDate] = useState(null);
-  const [startTime, setStartTime] = useState('06:00');
   const [address, setAddress] = useState('');
   const [selectedAddressType, setSelectedAddressType] = useState('');
-  const [isTimeOpen, setIsTimeOpen] = useState(false);
 
   const today = new Date();
 
@@ -29,23 +25,12 @@ const Book = () => {
     setAddress(formattedAddress);
   };
 
-  const validateTime = (time) => {
-    const [hour, minute] = time.split(':').map(Number);
-    if ((hour >= 6 && hour < 9) || (hour >= 18 && hour < 21)) {
-      setStartTime(time);
-    } else {
-      alert('Service is available between 6 AM to 9 AM or 6 PM to 9 PM.');
-    }
-  };
-
   const handlePayment = () => {
     dispatch(
       addBookingInfo({
         startDate: startDate.toISOString(),
-        startTime,
         address,
         selectedAddressType,
-        isTimeOpen,
       })
     );
     navigate('/user/payment');
@@ -75,46 +60,14 @@ const Book = () => {
           />
         </div>
 
-        <h4 className="input-label">Select Time</h4>
-        <div className="input-group">
-          <FaClock className="input-icon" />
-          <div className="time-picker-wrapper">
-            <button
-              onClick={() => setIsTimeOpen(true)}
-              className="time-picker-button"
-            >
-              {startTime}
-            </button>
-            {isTimeOpen && (
-              <div className="time-picker-container">
-                <TimeKeeper
-                  time={startTime}
-                  onChange={(data) => validateTime(data.formatted24)}
-                  switchToMinuteOnHourSelect={true}
-                  onDoneClick={() => setIsTimeOpen(false)}
-                />
-              </div>
-            )}
-          </div>
-        </div>
-
         <h3 className="section-title">Pick-up Address</h3>
         <div className="input-group">
           <FaMapMarkerAlt className="input-icon" />
-          {/* <Autocomplete
-            apiKey="YOUR_GOOGLE_API_KEY"
-            onPlaceSelected={handlePlaceSelected}
-            className="address-input"
-            placeholder="Enter pick-up address"
-          /> */}
-
           <input
             className="pickup_address"
             type="text"
             value={address}
-            onChange={(e) => {
-              setAddress(e.target.value);
-            }}
+            onChange={(e) => setAddress(e.target.value)}
             placeholder="Enter the address"
           />
         </div>
