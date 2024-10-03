@@ -60,7 +60,7 @@
 
       .pickup_address,
       .date-picker,
-      .time-picker-button,
+      // .time-picker-button,
       .address-input {
         background-color: #e2e8f0;
         border-radius: 8px;
@@ -75,19 +75,19 @@
       }
     }
 
-    .time-picker-wrapper {
-      position: relative;
+    // .time-picker-wrapper {
+    //   position: relative;
 
-      .time-picker-container {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 10;
-        background: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-      }
-    }
+    //   .time-picker-container {
+    //     position: absolute;
+    //     top: 100%;
+    //     left: 0;
+    //     z-index: 10;
+    //     background: white;
+    //     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    //     border-radius: 8px;
+    //   }
+    // }
 
     .address-type-options {
       display: flex;
